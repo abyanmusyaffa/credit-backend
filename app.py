@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pickle
+# import pickle
+import joblib
 import numpy as np
 
 app = Flask(__name__)
@@ -8,7 +9,8 @@ CORS(app)
 
 # Load model
 with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
+    model = joblib.load("model.pkl")
+    # model = pickle.load(f)
 
 # Feature order from model (61 features, one-hot encoded)
 FEATURE_NAMES = [
